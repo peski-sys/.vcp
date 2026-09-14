@@ -1,0 +1,66 @@
+name: Android CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: android-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@de7274f081f381c8f8158605e0321c36c376e2e6 # v6.0.1
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Validate Gradle wrapper
+        uses: gradle/actions/wrapper-validation@67621b124fd2e251c5e8a0e6e3b91318f2287669 # v6.3.0
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@67621b124fd2e251c5e8a0e6e3b91318f2287669 # v6.3.0
+
+      - name: Install Android SDK components
+        run: sdkmanager "platforms;android-37.0" "build-tools;36.0.0"
+
+      - name: Set wrapper permissions
+        run: chmod +x gradlew
+
+      - name: Test, lint, and assemble
+        run: ./gradlew testDebugUnitTest lintDebug assembleDebug assembleRelease
+
+      - name: Reject repository artifacts and secrets
+        run: |
+          if git ls-files | grep -E '(^|/)(local\.properties|.*\.(apk|aab|jks|keystore|p12|pfx|pem|key|env))$'; then
+            echo 'Generated artifact or secret-like file is tracked.' >&2
+            exit 1
+          fi
+
+      - name: Enforce permission boundary
+        run: |
+          permissions="$($ANDROID_HOME/build-tools/36.0.0/aapt2 dump permissions app/build/outputs/apk/debug/app-debug.apk)"
+          printf '%s\n' "$permissions"
+          if printf '%s\n' "$permissions" | grep -Eq 'android\.permission\.(INTERNET|ACCESS_NETWORK_STATE|WAKE_LOCK|WRITE_EXTERNAL_STORAGE|MANAGE_EXTERNAL_STORAGE|FOREGROUND_SERVICE)'; then
+            echo 'Unexpected packaged permission detected.' >&2
+            exit 1
+          fi
+          for expected in READ_MEDIA_VIDEO READ_MEDIA_VISUAL_USER_SELECTED READ_EXTERNAL_STORAGE POST_NOTIFICATIONS RECEIVE_BOOT_COMPLETED; do
+            if ! printf '%s\n' "$permissions" | grep -q "android.permission.$expected"; then
+              echo "Required permission missing: $expected" >&2
+              exit 1
+            fi
+          done

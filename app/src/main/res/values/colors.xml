@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ink">#1E1E1E</color>
+    <color name="ink_secondary">#666562</color>
+    <color name="surface">#FFFEFA</color>
+    <color name="line">#DEDCD6</color>
+    <color name="accent">#1E1E1E</color>
+    <color name="error">#A43737</color>
+    <color name="button_text">#FFFFFF</color>
+    <color name="launcher_background">#FFFEFA</color>
+</resources>

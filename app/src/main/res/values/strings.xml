@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">.vcp</string>
+    <string name="app_tagline">Video Compatibility Processor</string>
+    <string name="just_works">Just works.</string>
+
+    <string name="automatic_mode_title">Automatic processing</string>
+    <string name="automatic_mode_off">Process new videos when they arrive.</string>
+    <string name="automatic_mode_on">Watching for new videos.</string>
+    <string name="automatic_mode_permission">Full video access is needed for automatic processing.</string>
+    <string name="automatic_mode_unsupported">Automatic processing requires Android 11 or newer. Manual processing is still available.</string>
+    <string name="automatic_mode_status">%1$s\n%2$s</string>
+
+    <string name="original_reminder_title">30-day reminder</string>
+    <string name="original_reminder_body">Remind me to review originals 30 days after a copy is made. Nothing is deleted.</string>
+    <string name="original_reminder_permission_denied">Notifications are off, so the reminder was not enabled.</string>
+    <string name="original_reminder_channel_name">Original review reminders</string>
+    <string name="original_reminder_channel_description">Optional reminders to review originals after compatible copies are created.</string>
+    <string name="original_reminder_notification_title">Review your original videos</string>
+    <plurals name="original_reminder_body">
+        <item quantity="one">A compatible copy was created 30 days ago. The original is still in Gallery.</item>
+        <item quantity="other">%d compatible copies were created at least 30 days ago. Their originals are still in Gallery.</item>
+    </plurals>
+
+    <string name="manual_title">Process one video</string>
+    <string name="manual_body">Choose a video to check and process.</string>
+    <string name="select_video">Choose video</string>
+    <string name="select_another_video">Choose another video</string>
+    <string name="inspecting">Checking compatibility…</string>
+    <string name="inspection_failed">Couldn’t check this video</string>
+
+    <string name="assessment_fix_title">Compatibility fix available</string>
+    <string name="assessment_fix_body">Matched the confirmed iPhone HDR compatibility issue.</string>
+    <string name="assessment_clear_title">No known issue found</string>
+    <string name="assessment_clear_body">Nothing needs to be changed.</string>
+    <string name="assessment_inconclusive_title">Video left unchanged</string>
+    <string name="assessment_inconclusive_body">The lossless fix could not be verified for this file.</string>
+    <string name="compatible_copy_body">No re-encoding. Original kept.</string>
+    <string name="create_compatible_copy">Create compatible copy</string>
+
+    <string name="remuxing_title">Creating compatible copy</string>
+    <string name="remuxing_body">Copying the original video and audio streams…</string>
+    <string name="saving_title">Saving to Gallery</string>
+    <string name="saving_body">Publishing the new copy…</string>
+    <string name="validating_title">Verifying the copy</string>
+    <string name="validating_body">Checking compatibility and first-frame decoding…</string>
+    <string name="normalization_success_title">Compatible copy saved</string>
+    <string name="normalization_success_body">%1$s is ready in Gallery.\n\nNo re-encoding was used. The original is unchanged.</string>
+    <string name="normalization_error_title">Copy not created</string>
+    <string name="normalization_error_body">%1$s\n\nThe original is unchanged.</string>
+    <string name="cancel">Cancel</string>
+    <string name="retry">Try again</string>
+    <string name="open_compatible_copy">Open in Gallery</string>
+    <string name="no_video_app">No app is available to open this video.</string>
+</resources>

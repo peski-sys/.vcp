@@ -1,0 +1,37 @@
+name: Feature request
+description: Propose a focused compatibility or safety improvement
+title: "[Feature]: "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Describe the concrete media compatibility problem and affected device/app.
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Reproducible evidence
+      description: Explain the tested controls that isolate the trigger. Do not upload personal media.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+      description: Explain how the change can remain local, original-safe, and conservative.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope check
+      options:
+        - label: The proposal does not require modifying or deleting source media.
+          required: true
+        - label: The proposal does not require uploading user media.
+          required: true

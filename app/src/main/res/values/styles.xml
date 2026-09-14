@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.CompatVideo" parent="android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:windowBackground">@color/surface</item>
+        <item name="android:colorAccent">@color/accent</item>
+        <item name="android:statusBarColor">@color/surface</item>
+        <item name="android:navigationBarColor">@color/surface</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:windowActionModeOverlay">true</item>
+    </style>
+
+    <style name="TextAppearance.Vcp.Title" parent="android:style/TextAppearance.Material.Headline">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">@color/ink</item>
+        <item name="android:textSize">34sp</item>
+    </style>
+
+    <style name="TextAppearance.Vcp.Heading" parent="android:style/TextAppearance.Material.Title">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textColor">@color/ink</item>
+        <item name="android:textSize">17sp</item>
+    </style>
+
+    <style name="TextAppearance.Vcp.Body" parent="android:style/TextAppearance.Material.Body1">
+        <item name="android:textColor">@color/ink_secondary</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:lineSpacingExtra">2dp</item>
+    </style>
+
+    <style name="TextAppearance.Vcp.Meta" parent="android:style/TextAppearance.Material.Body2">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textColor">@color/ink_secondary</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:lineSpacingExtra">1dp</item>
+    </style>
+</resources>
