@@ -35,7 +35,10 @@ jobs:
         uses: gradle/actions/setup-gradle@67621b124fd2e251c5e8a0e6e3b91318f2287669 # v6.3.0
 
       - name: Install Android SDK components
-        run: sdkmanager "platforms;android-37.0" "build-tools;36.0.0"
+        run: >-
+          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
+          "platforms;android-37.0"
+          "build-tools;36.0.0"
 
       - name: Set wrapper permissions
         run: chmod +x gradlew
